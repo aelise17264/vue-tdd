@@ -1,10 +1,6 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
+  <SignUpPage />
+  <!-- <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -14,8 +10,24 @@ import TheWelcome from './components/TheWelcome.vue'
 
   <main>
     <TheWelcome />
-  </main>
+  </main> -->
 </template>
+
+<script>
+import HelloWorld from './components/HelloWorld.vue'
+import TheWelcome from './components/TheWelcome.vue'
+import SignUpPage from './pages/SignUpPage.vue';
+export default {
+  name: "App",
+  components: {
+    HelloWorld,
+    TheWelcome,
+    SignUpPage
+  }
+}
+</script>
+
+
 
 <style scoped>
 header {
