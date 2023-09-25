@@ -14,20 +14,18 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-import SignUpPage from './pages/SignUpPage.vue';
+import HelloWorld from "./components/HelloWorld.vue";
+import TheWelcome from "./components/TheWelcome.vue";
+import SignUpPage from "./pages/SignUpPage.vue";
 export default {
   name: "App",
   components: {
     HelloWorld,
     TheWelcome,
-    SignUpPage
-  }
-}
+    SignUpPage,
+  },
+};
 </script>
-
-
 
 <style scoped>
 header {
