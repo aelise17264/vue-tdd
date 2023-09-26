@@ -33,11 +33,11 @@ export default {
   },
   methods: {
     submit() {
-      const requestBody = {
-        username: this.username,
-        email: this.email,
-        password: this.password,
-      };
+      // const requestBody = {
+      //   username: this.username,
+      //   email: this.email,
+      //   password: this.password,
+      // };
       // event.preventDefault();
       axios.post("/api/1.0/users", {
         username: this.username,
