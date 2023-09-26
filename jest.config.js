@@ -5,7 +5,7 @@ module.exports = {
     ".*\\.(vue)$": "vue-jest",
     "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
   },
-  "moduleNameMapper": {
-    "axios": "axios/dist/node/axios.cjs"
-  }
+  moduleNameMapper: {
+    axios: "axios/dist/node/axios.cjs",
+  },
 };
