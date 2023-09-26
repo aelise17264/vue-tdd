@@ -2,6 +2,7 @@ import SignUpPage from "./SignUpPage.vue";
 import { render, screen } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
+import axios from "axios";
 
 describe("sign up page", () => {
   describe("layout", () => {
@@ -66,5 +67,34 @@ describe("sign up page", () => {
       const button = screen.queryByRole("button", { name: "Sign Up" });
       expect(button).not.toBeDisabled();
     });
+    it("sends user info to backend", async () => {
+      render(SignUpPage);
+      const usernameInput = screen.queryByLabelText("Username")
+      const emailInput = screen.queryByLabelText("Email")
+      const passwordInput = screen.queryByLabelText("Password");
+      const password2Input = screen.queryByLabelText("Repeat Password");
+      await userEvent.type(usernameInput, "user1");
+      await userEvent.type(emailInput, "email@email.com")
+      await userEvent.type(passwordInput, "Password123");
+      await userEvent.type(password2Input, "Password123");
+      const button = screen.queryByRole("button", { name: "Sign Up" });
+
+
+      const mockFn = jest.fn();
+
+      axios.post = mockFn;
+
+      await userEvent.click(button)
+      
+      const firstCall = mockFn.mock.calls[0]
+      const body = firstCall[1]
+
+      expect(body).toEqual({
+        username: 'user1',
+        email: 'email@email.com',
+        password: 'Password123'
+      })
+
+   });
   });
 });

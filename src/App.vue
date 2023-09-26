@@ -13,7 +13,7 @@
   </main> -->
 </template>
 
-<script>
+<script >
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 import SignUpPage from "./pages/SignUpPage.vue";

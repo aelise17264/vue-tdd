@@ -1,47 +1,46 @@
 <template>
   <h1>Sign Up</h1>
   <label for="username">Username</label>
-  <input id="username" placeholder="username" @input="onChangeUserName"/>
+  <input id="username" 
+   placeholder="username" v-model="username"/>
 
   <label for="email">Email</label>
-  <input id="email" placeholder="email" />
+  <input id="email" placeholder="email" v-model="email"/>
 
   <label for="password">Password</label>
-  <input type="password" id="password" @input="onChangePassword" />
+  <input type="password" id="password" 
+  v-model="password"
+  />
 
   <label for="password2">Repeat Password</label>
-  <input type="password" id="password2" @input="onChangePassword2" />
+  <input type="password" id="password2" 
+  v-model="password2" />
 
-  <button :disabled="isDisabledComputed">Sign Up</button>
+  <button :disabled="isDisabledComputed" @click="submit">Sign Up</button>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "SignUpPage",
   data() {
     return {
-      disabled: true,
-      username: '',
       password: "",
       password2: "",
+      username: '',
+      email: ''
     };
   },
   methods: {
-    onChangePassword(event) {
-      this.password = event.target.value;
-    },
-    onChangePassword2(event) {
-      this.password2 = event.target.value;
-    },
-    onChangeUserName(event) {
-      this.username = event.target.value;
-    },
-    isDisabled() {
-      return this.password && this.password2
-        ? this.password != this.password2
-        : true;
-    },
-  },
+    submit(){
+      axios.post("/api/1.0/users", {
+        username: this.username,
+        email: this.email,
+        password: this.password
+      })
+    }
+  }
+, 
   computed: {
     //cached based on their reactive properties
     isDisabledComputed(){
