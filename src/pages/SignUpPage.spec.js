@@ -99,9 +99,9 @@ describe("sign up page", () => {
 
       // await server.close();
 
-      const firstCall = mockFn.mock.calls[0]
-      console.log(firstCall)
-      const body = firstCall[1]
+      const firstCall = mockFn.mock.calls[0];
+      console.log(firstCall);
+      const body = firstCall[1];
       // const body = JSON.parse(firstCall[1].body)
 
       expect(body).toEqual({
