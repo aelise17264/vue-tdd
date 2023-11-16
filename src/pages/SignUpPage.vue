@@ -45,9 +45,10 @@
         <div class="text-center mb-3">
           <button
             class="btn btn-primary"
-            :disabled="isDisabledComputed"
+            :disabled="isDisabledComputed || disabled"
             @click.prevent="submit"
           >
+          <span v-if="apiProgress" class="spinner-border spinner-sprder-sm" role="status" aria-hidden="true"></span>
             Sign Up
           </button>
         </div>
@@ -62,32 +63,24 @@ export default {
   name: "SignUpPage",
   data() {
     return {
+      disabled: false,
       password: "",
       password2: "",
       username: "",
       email: "",
+      apiProgress: false,
     };
   },
   methods: {
     submit() {
-      // const requestBody = {
-      //   username: this.username,
-      //   email: this.email,
-      //   password: this.password,
-      // };
-      // event.preventDefault();
+      this.disabled = true
+      this.apiProgress = true
       axios.post("/api/1.0/users", {
         username: this.username,
         email: this.email,
         password: this.password,
       });
-      //   fetch("/api/1.0/users", {
-      //     method: "POST",
-      //     body: JSON.stringify(requestBody),
-      //     headers: {
-      //       "Content-type": "application/json",
-      //     },
-      //   });
+
     },
   },
   computed: {
